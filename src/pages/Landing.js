@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Welcome from './welcome/Welcome';
-import MainContent from './dashboard/Transaction';
+import Dashboard from './dashboard/Transaction';
 import Profile from './profile/Profile';
 import Summary from './summary/Summary';
 import Sidebar from '../components/sidebar/Sidebar';
@@ -18,7 +18,7 @@ const Landing = () => {
       {currentUser && <Sidebar />}
       <Routes>
         <Route path='/' element={<Welcome />} />
-        <Route path='/home' element={<MainContent />} />
+        <Route path='/home' element={<Dashboard />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/summary' element={<Summary />} />
       </Routes>
