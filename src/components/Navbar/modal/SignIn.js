@@ -36,9 +36,7 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
     }
   };
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
+  function afterOpenModal() {}
   function closeModal() {
     setLoginIsOpen(false);
   }

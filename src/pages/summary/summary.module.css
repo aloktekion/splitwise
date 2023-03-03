@@ -1,27 +1,19 @@
 .Summary_container {
   display: flex;
-  width: 100vw;
-  justify-content: center;
-  gap: 20px;
-}
-.Boxes {
-  width: 80vw;
-  display: flex;
-  gap: 15px;
-}
-.SummaryBox {
-  margin-top: 1.5rem;
-  height: 80vh;
+  flex-direction: column;
   width: 60vw;
   background-color: #f7f7f7;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  gap: 1rem;
+  border-radius: 1rem;
 }
 .balanceSheet {
   display: flex;
   width: 100%;
-  gap: 20px;
+}
+.SummaryBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
 import LoginSignUp from './LoginSignUp';
-// import UserPro from './UserPro';
+import styles from './navbar.module.css';
 
 const Navbar = ({ setLoginIsOpen, setSignUpIsOpen }) => {
   return (
     <div>
-      <div className='navbar'>
+      <div className={styles.navbar}>
         <i className='bi bi-pie-chart-fill'></i>
         <LoginSignUp
           setLoginIsOpen={setLoginIsOpen}

@@ -2,8 +2,7 @@ import React from 'react';
 
 const DisplayTransaction = ({ transaction }) => {
   const { amount, description, Paidby, PaidFor } = transaction;
-  // console.log(transaction);
-  //console.log(PaidFor);
+
   const paidfor = PaidFor.map((_) => _).join(', ');
   return (
     <tr>

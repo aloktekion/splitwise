@@ -7,7 +7,7 @@ const AddFriend = ({ setFriendIsOpen }) => {
 
   return (
     <button className='btn' onClick={openloginModal}>
-      <li>Add Friend</li>
+      Add Friend
     </button>
   );
 };

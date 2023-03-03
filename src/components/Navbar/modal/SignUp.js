@@ -19,12 +19,6 @@ const customStyles = {
 };
 
 const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
-  // const [userName, setUserName] = useState('');
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [cpassword, setCpassword] = useState('');
-
   const [signUpCreds, setSignUpCreds] = useState({
     userName: '',
     name: '',

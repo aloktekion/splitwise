@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import LeftSidebar from '../dashboard/sidebar/LeftSidebar';
+import BalanceSheet from './components/balanceSheet/BalanceSheet';
+import { filterTransactions } from './helper/helper';
 import Styles from './summary.module.css';
-import BalanceSheet from '../dashboard/transactionContainer/transactionContainerComponents/oweDisplayBox/BalanceSheet';
-import { filterTransactions } from './helper';
 
 const Summary = () => {
   const currentUser = useSelector(
@@ -51,32 +50,28 @@ const Summary = () => {
 
   return (
     <div className={Styles.Summary_container}>
-      <div className={Styles.Boxes}>
-        <LeftSidebar />
-
-        <div className={Styles.SummaryBox}>
-          <div className={Styles.balanceSheet}>
-            <BalanceSheet desc={'TotalBalance'} amount={total} />
-            <BalanceSheet desc={'You Owe'} amount={`₹${youOwe.toFixed(2)}`} />
-            <BalanceSheet
-              desc={'You are owed'}
-              amount={` ₹${youAreOwed.toFixed(2)}`}
-            />
-          </div>
-          <h1>Summary: </h1>
-          <table>
-            {Object.entries(record).map(([user, amount]) =>
-              amount === 0 ? null : (
-                <tr>
-                  <td>
-                    {amount > 0 ? `You owe ${user} ₹` : `${user} owes you ₹`}
-                    {Math.abs(amount.toFixed(2))}
-                  </td>
-                </tr>
-              )
-            )}
-          </table>
-        </div>
+      <div className={Styles.balanceSheet}>
+        <BalanceSheet desc={'TotalBalance'} amount={total} />
+        <BalanceSheet desc={'You Owe'} amount={`₹${youOwe.toFixed(2)}`} />
+        <BalanceSheet
+          desc={'You are owed'}
+          amount={` ₹${youAreOwed.toFixed(2)}`}
+        />
+      </div>
+      <div className={Styles.SummaryBox}>
+        <h1>Summary: </h1>
+        <table>
+          {Object.entries(record).map(([user, amount]) =>
+            amount === 0 ? null : (
+              <tr>
+                <td>
+                  {amount > 0 ? `You owe ${user} ₹` : `${user} owes you ₹`}
+                  {Math.abs(amount.toFixed(2))}
+                </td>
+              </tr>
+            )
+          )}
+        </table>
       </div>
     </div>
   );

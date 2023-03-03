@@ -1,0 +1,9 @@
+.transaction_container {
+  height: auto;
+  width: auto;
+  margin-top: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

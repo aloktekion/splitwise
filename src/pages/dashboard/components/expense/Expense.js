@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Select } from 'antd';
 import { useDispatch } from 'react-redux';
-import { addExpense } from '../../../../../redux/transaction/transactionAction';
+import { addExpense } from '../../../../redux/transaction/transactionAction';
 import { useSelector } from 'react-redux';
 
 import Styles from './expense.module.css';

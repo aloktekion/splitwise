@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import styles from './loginSignup.module.css';
 
 const LoginSignUp = ({ setLoginIsOpen, setSignUpIsOpen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-
   const currentUser = useSelector(
     (reduxStore) => reduxStore.reduce.currentUser
   );
-  // console.log(currentUser);
+
   useEffect(() => {
     if (
       currentUser !== null ||
@@ -39,18 +39,14 @@ const LoginSignUp = ({ setLoginIsOpen, setSignUpIsOpen }) => {
       </>
     );
   return (
-    <ul>
+    <div className={styles.navbar_btn}>
       <button onClick={openloginModal}>
-        <li>
-          <i className='bi bi-person-lock'></i> LogIn
-        </li>
+        <i className='bi bi-person-lock'></i> LogIn
       </button>
       <button onClick={opensignupModal}>
-        <li>
-          <i className='bi bi-person-add'></i> SignUp
-        </li>
+        <i className='bi bi-person-add'></i> SignUp
       </button>
-    </ul>
+    </div>
   );
 };
 

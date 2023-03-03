@@ -26,7 +26,6 @@ const onLogin = (newState, action) => {
   const { email, password } = action.payload;
 
   const registeredUsers = JSON.parse(localStorage.getItem('userDetails'));
-  // console.log(registeredUsers);
   const registeredUser = registeredUsers.find((x) => {
     return x.email === email && x.password === password;
   });

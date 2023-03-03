@@ -7,7 +7,7 @@ const AddExpense = ({ setExpenseIsOpen }) => {
 
   return (
     <button className='btn' onClick={openloginModal}>
-      <li>Add Expense</li>
+      Add Expense
     </button>
   );
 };
