@@ -15,7 +15,7 @@ const Welcome = () => {
       setLoggedIn(true);
     }
     if (loggedIn) {
-      navigate('/home');
+      navigate('/group');
     }
   }, [currentUser, loggedIn, navigate]);
 

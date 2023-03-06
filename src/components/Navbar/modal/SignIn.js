@@ -19,20 +19,21 @@ const customStyles = {
 };
 
 const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
-  const [email, setEmail] = useState('');
+  const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alluser = useSelector((reduxStore) => reduxStore.reduce.alluser);
+  const alluser = useSelector((reduxStore) => reduxStore.reduce.allUser);
 
   const handleSubmit = () => {
-    dispatch(authAction(email, password));
-    const message = validateLoginUser(email, password, alluser);
+    dispatch(authAction(userName, password));
+    const message = validateLoginUser(userName, password, alluser);
+
     setMessage(message);
     if (message === '') {
+      navigate('/group');
       setLoginIsOpen(false);
-      navigate('/home');
     }
   };
 
@@ -52,10 +53,10 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
         <i className='bi bi-person-square'></i>
         <h1>SignIn Here !</h1>
         <input
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          type='email'
-          placeholder='Email Address *'
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          type='text'
+          placeholder='setUserName *'
           required
         />
         <input
@@ -67,7 +68,6 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
         />
         <p style={{ color: 'red' }}>{message}</p>
         <button onClick={handleSubmit}>SignIn</button>
-        {/* <navigate> Don't have account</navigate> */}
       </div>
     </Modal>
   );

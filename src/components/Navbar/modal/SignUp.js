@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { signup } from '../../../redux/auth/action/authAction';
 import { useSelector } from 'react-redux';
 import { validatePerson } from './helper/helper';
+import { filterUserIdFornewMember } from './helper/helper';
 // import { useNavigate } from 'react-router-dom';
 
 const customStyles = {
@@ -25,12 +26,12 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
     email: '',
     password: '',
     cpassword: '',
-    shareAmount: 0,
-    totalPaidAmount: 0,
   });
 
   const alluser = useSelector((reduxStore) => reduxStore.reduce.alluser);
-
+  const groups = useSelector((reduxStore) => reduxStore.groups.group);
+  console.log(filterUserIdFornewMember(groups, signUpCreds.userName));
+  console.log(groups);
   const message = validatePerson(
     signUpCreds.password,
     signUpCreds.cpassword,

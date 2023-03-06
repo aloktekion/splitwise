@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { Select } from 'antd';
 import { useDispatch } from 'react-redux';
-import { addExpense } from '../../../../redux/transaction/transactionAction';
+import { addExpense } from '../../../../redux/gruop/addGroupAction';
 import { useSelector } from 'react-redux';
 
 import Styles from './expense.module.css';
@@ -24,24 +24,25 @@ const Expense = ({ expenseIsOpen, setExpenseIsOpen }) => {
   const [amount, setAmount] = useState(0);
   const [desc, setDesc] = useState('');
   const [value, setValue] = useState([]);
-  const alluser = useSelector((reduxStore) => {
-    // console.log(reduxStore);
-    return reduxStore.reduce.alluser;
-  });
+
+  const groupId = useSelector((reduxStore) => reduxStore.groups.group_id);
+  const groups = useSelector((reduxStore) => reduxStore.groups.group);
   // console.log(alluser);
+  const alluser = groups[groupId].members;
+  console.log(alluser);
   const { Option } = Select;
 
   const children = [];
   if (alluser !== null) {
-    for (let i = 0; i < alluser.length; i++) {
-      children.push(<Option key={alluser[i].name}>{alluser.name}</Option>);
-    }
+    Object.keys(alluser).forEach((element) => {
+      children.push(<Option key={alluser[element]}>{alluser[element]}</Option>);
+    });
   }
   const handleSubmit = () => {
     const Paidby = document.getElementById('paidBy').selectedOptions;
 
     const valuesby = Array.from(Paidby).map(({ value }) => value);
-
+    console.log(valuesby);
     dispatch(addExpense(amount, desc, valuesby, value));
     setExpenseIsOpen(false);
   };
@@ -97,10 +98,9 @@ const Expense = ({ expenseIsOpen, setExpenseIsOpen }) => {
           <div className={Styles.paidBy}>
             <h3>Paid by</h3>
             <select id='paidBy'>
-              {alluser?.map((element) => {
-                // console.log(element);
-                return <option value={element.name}>{element.name}</option>;
-              })}
+              {alluser.map((x) => (
+                <option value={x}>{x}</option>
+              ))}
             </select>
           </div>
         </div>

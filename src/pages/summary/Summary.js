@@ -8,19 +8,28 @@ const Summary = () => {
   const currentUser = useSelector(
     (reduxStore) => reduxStore.reduce.currentUser
   );
-  const transaction = useSelector((reduxStore) => reduxStore.transaction);
-  const filterTransaction = transaction.filter(filterTransactions(currentUser));
-  const total = transaction.reduce((total, current) => {
+  const groups = useSelector((reduxStore) => reduxStore.groups.group);
+  const groupID = useSelector((reduxStore) => reduxStore.groups.group_id);
+
+  // console.log(groupID);
+  // console.log(groups);
+  const filterTransaction = groups[groupID]?.transaction.filter(
+    filterTransactions(currentUser)
+  );
+  // console.log(filterTransaction);
+  const total = filterTransaction?.reduce((total, current) => {
     return total + Number(current.amount);
   }, 0);
+  // console.log(total);
+
   const record = {};
 
-  filterTransaction.forEach((transaction) => {
+  filterTransaction?.forEach((transaction) => {
     const splitAmongCount = transaction.PaidFor.length;
     const splittedAmount = transaction.amount / splitAmongCount;
 
     if (transaction.Paidby[0] === currentUser.name) {
-      transaction.PaidFor.forEach((user) => {
+      transaction.PaidFor?.forEach((user) => {
         if (user !== currentUser.name) {
           if (record[user] !== undefined) {
             record[user] -= splittedAmount;

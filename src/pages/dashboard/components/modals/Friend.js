@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { validateFriend } from '../friend/helper/Helper';
+import { addfriend } from '../../../../redux/gruop/addGroupAction';
+import { groupChange } from '../../../../redux/auth/action/authAction';
 const customStyles = {
   content: {
     top: '50%',
@@ -15,17 +18,21 @@ const customStyles = {
 
 const Friend = ({ friendIsOpen, setFriendIsOpen }) => {
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const user = JSON.parse(localStorage.getItem('userDetails'));
-  const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  const [userName, setUserName] = useState('');
+  const [message, setMessage] = useState('');
+  const dispatch = useDispatch();
+  // const allUser = useSelector((reduxStore) => reduxStore.reduce.allUser);
+  const groupId = useSelector((reduxStore) => reduxStore.groups.group_id);
+  const groups = useSelector((reduxStore) => reduxStore.groups.group);
+
+  // console.log(allUser);
+
   const handleSubmit = () => {
-    const search = user.find((x) => {
-      return x.email === email;
-    });
-    console.log(search);
-    currentUser.friend.push(name);
-    localStorage.setItem('currentUser', JSON.stringify(currentUser));
-    console.log(currentUser);
+    setMessage(validateFriend(userName, groupId, groups));
+    if (message !== '') return;
+    dispatch(addfriend(userName));
+    dispatch(groupChange(userName, groupId));
+    setFriendIsOpen(false);
   };
 
   function afterOpenModal() {}
@@ -44,19 +51,20 @@ const Friend = ({ friendIsOpen, setFriendIsOpen }) => {
         <i className='bi bi-person-square'></i>
         <h1>Friend Here !</h1>
         <input
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          type='text'
+          placeholder='userName *'
+          required
+        />
+        <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type='email'
           placeholder='Email Address *'
           required
         />
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          type='text'
-          placeholder='name *'
-          required
-        />
+        <p style={{ color: 'red' }}>{message}</p>
         <button onClick={handleSubmit}>Friend</button>
       </div>
     </Modal>

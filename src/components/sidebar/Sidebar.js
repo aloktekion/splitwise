@@ -4,12 +4,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { logout } from '../../redux/auth/action/authAction';
 import styles from './sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({ setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());
+    setIsSidebarOpen(false);
     navigate('/');
   };
   let activeStyle = {

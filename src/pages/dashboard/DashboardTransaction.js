@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import TransactionLog from './components/transactionLog/TransactionLog';
 import AddExpense from './components/expense/AddExpense';
-import Expense from './components/expense/Expense';
+import Expense from './components/modals/Expense';
 import AddFriend from './components/friend/AddFriend';
-import Friend from './components/friend/Friend';
+import Friend from './components/modals/Friend';
 import styles from './transaction.module.css';
 
 const Middle = () => {

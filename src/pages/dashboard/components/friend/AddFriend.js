@@ -1,14 +1,14 @@
 import React from 'react';
 
-const AddFriend = ({ setFriendIsOpen }) => {
-  function openloginModal() {
+const AddExpense = ({ setFriendIsOpen }) => {
+  const openfriendModal = () => {
     setFriendIsOpen(true);
-  }
+  };
 
   return (
-    <button className='btn' onClick={openloginModal}>
+    <button className='btn' onClick={openfriendModal}>
       Add Friend
     </button>
   );
 };
-export default AddFriend;
+export default AddExpense;

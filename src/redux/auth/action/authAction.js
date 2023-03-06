@@ -1,10 +1,10 @@
 import { ActionTypes } from '../constant/authTypes';
 
-export const authAction = (email, password) => {
+export const authAction = (userName, password) => {
   return {
     type: ActionTypes.SIGN_IN,
     payload: {
-      email,
+      userName,
       password,
     },
   };
@@ -16,14 +16,7 @@ export const logout = () => {
   };
 };
 
-export const signup = (
-  userName,
-  name,
-  email,
-  password,
-  shareAmount,
-  totalPaidAmount
-) => {
+export const signup = (userName, name, email, password) => {
   return {
     type: ActionTypes.SIGN_UP,
     payload: {
@@ -31,6 +24,26 @@ export const signup = (
       name,
       email,
       password,
+    },
+  };
+};
+
+export const groupChange = (userName, groupId) => {
+  return {
+    type: ActionTypes.GROUP_CHANGE,
+    payload: {
+      userName,
+      groupId,
+    },
+  };
+};
+
+export const setGroupId = (groupId, userName) => {
+  return {
+    type: ActionTypes.SET_GROUP_ID,
+    payload: {
+      groupId,
+      userName,
     },
   };
 };

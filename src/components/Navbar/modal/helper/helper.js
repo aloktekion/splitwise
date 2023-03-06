@@ -11,7 +11,7 @@ const validatePerson = (password, cpassword, alluser, username, email) => {
     message = "password didn't match";
     return message;
   }
-  console.log(email);
+  // console.log(email);
   // if (!validEmail.test(email)) {
 
   //   message = 'Email not matched';
@@ -21,17 +21,25 @@ const validatePerson = (password, cpassword, alluser, username, email) => {
   return message;
 };
 
-const validateLoginUser = (email, password, alluser) => {
+const validateLoginUser = (userName, password, alluser) => {
   let message = '';
-  const user = alluser.find(
-    (x) => x.email === email && x.password === password
-  );
-
+  const user = alluser[userName];
   if (!user) {
     message = 'Unregistered User';
+    return message;
+  }
+
+  if (user.password !== password) {
+    message = 'login Creds wrong';
     return message;
   }
   return message;
 };
 
-export { validatePerson, validateLoginUser };
+const filterUserIdFornewMember = (groups, userName) => {
+  return Object.keys(groups)
+    ?.forEach((key) => groups[key]?.members)
+    ?.filter((username) => userName === username);
+};
+
+export { validatePerson, validateLoginUser, filterUserIdFornewMember };
