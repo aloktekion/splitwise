@@ -21,6 +21,7 @@ function App() {
           setLoginIsOpen={setLoginIsOpen}
           setSignUpIsOpen={setSignUpIsOpen}
         />
+
         <Landing />
       </BrowserRouter>
     </>

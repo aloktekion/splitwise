@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Modal from 'react-modal';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authAction } from '../../../redux/auth/action/authAction';
 import { useSelector } from 'react-redux';
@@ -23,7 +22,6 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const alluser = useSelector((reduxStore) => reduxStore.reduce.allUser);
 
   const handleSubmit = () => {
@@ -32,7 +30,6 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
 
     setMessage(message);
     if (message === '') {
-      navigate('/group');
       setLoginIsOpen(false);
     }
   };
@@ -47,7 +44,6 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel='Example Modal'
     >
       <div className='login'>
         <i className='bi bi-person-square'></i>
@@ -56,7 +52,7 @@ const SignIn = ({ loginIsOpen, setLoginIsOpen }) => {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           type='text'
-          placeholder='setUserName *'
+          placeholder='UserName *'
           required
         />
         <input

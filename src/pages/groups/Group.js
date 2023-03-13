@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getGroupId } from '../../redux/gruop/addGroupAction';
 import styles from './group.module.css';
 
-const Group = ({ setIsSidebarOpen, setAddGroupOpen }) => {
+const Group = ({ setAddGroupOpen }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const addGroupModal = () => {
@@ -12,27 +12,26 @@ const Group = ({ setIsSidebarOpen, setAddGroupOpen }) => {
   };
 
   const gotodashboard = (groupID) => {
-    // console.log('button clicked');
     dispatch(getGroupId(groupID));
-    setIsSidebarOpen(true);
-    navigate('/home');
+    navigate('/groupDetails');
   };
   const groups = useSelector((reduxStore) => reduxStore.groups);
   const currentUser = useSelector(
     (reduxStore) => reduxStore.reduce.currentUser
   );
-  // console.log(currentUser);
-  // console.log(groups);
   return (
     <div className={styles.group__Container}>
-      {currentUser?.groupID.map((key) => (
-        <button onClick={() => gotodashboard(key)}>
-          {groups.group[key]?.groupName}
-          {/* think about it */}
-        </button>
-      ))}
-
-      <button onClick={addGroupModal}>Add Group</button>
+      <div className={styles.container}>
+        {currentUser?.groupID.map((key) => (
+          <button onClick={() => gotodashboard(key)}>
+            {groups.group[key]?.groupName}
+            {/* think about it */}
+          </button>
+        ))}
+      </div>
+      <button className={styles.button} onClick={addGroupModal}>
+        Add Group
+      </button>
     </div>
   );
 };

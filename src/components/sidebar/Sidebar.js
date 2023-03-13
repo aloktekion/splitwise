@@ -44,6 +44,28 @@ const Sidebar = ({ setIsSidebarOpen }) => {
         >
           Profile
         </NavLink>
+        <NavLink
+          to='/group'
+          className='navlink'
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          Groups
+        </NavLink>
+
+        <NavLink
+          to='/category'
+          className='navlink'
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          CatergoricalAnalysis
+        </NavLink>
+        <NavLink
+          to='/allexpenseanalytics'
+          className='navlink'
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          allexpenseanalytics
+        </NavLink>
       </div>
       <div className='leftSidebarLowerSection'>
         <div className='mode'>

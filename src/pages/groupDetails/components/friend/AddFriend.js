@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddExpense = ({ setFriendIsOpen }) => {
+const AddFriend = ({ setFriendIsOpen }) => {
   const openfriendModal = () => {
     setFriendIsOpen(true);
   };
@@ -11,4 +11,4 @@ const AddExpense = ({ setFriendIsOpen }) => {
     </button>
   );
 };
-export default AddExpense;
+export default AddFriend;

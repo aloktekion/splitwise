@@ -4,8 +4,8 @@ import { useDispatch } from 'react-redux';
 import { signup } from '../../../redux/auth/action/authAction';
 import { useSelector } from 'react-redux';
 import { validatePerson } from './helper/helper';
-import { filterUserIdFornewMember } from './helper/helper';
-// import { useNavigate } from 'react-router-dom';
+import styles from './modal.module.css';
+// import { filterUserIdFornewMember } from './helper/helper';
 
 const customStyles = {
   content: {
@@ -15,6 +15,7 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    height: '35rem',
   },
   overlay: { background: 'rgba(0, 0, 0, 0.4)' },
 };
@@ -29,9 +30,9 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
   });
 
   const alluser = useSelector((reduxStore) => reduxStore.reduce.alluser);
-  const groups = useSelector((reduxStore) => reduxStore.groups.group);
-  console.log(filterUserIdFornewMember(groups, signUpCreds.userName));
-  console.log(groups);
+  // const groups = useSelector((reduxStore) => reduxStore.groups.group);
+  // console.log(filterUserIdFornewMember(groups, signUpCreds.userName));
+  // console.log(groups);
   const message = validatePerson(
     signUpCreds.password,
     signUpCreds.cpassword,
@@ -69,12 +70,12 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}
-      contentLabel='Example Modal'
     >
       <div className='login'>
         <i className='bi bi-person-bounding-box'></i>
         <h1>SignUp Here !</h1>
         <input
+          className={styles.input}
           value={signUpCreds.userName}
           onChange={(e) =>
             setSignUpCreds((prev) => ({ ...prev, userName: e.target.value }))
@@ -84,9 +85,9 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
           required
         />
         <input
+          className={styles.input}
           value={signUpCreds.name}
           onChange={(e) => {
-            // console.log(e);
             setSignUpCreds((prev) => ({
               ...prev,
               name: e.target.value,
@@ -97,6 +98,7 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
           required
         />
         <input
+          className={styles.input}
           value={signUpCreds.email}
           onChange={(e) =>
             setSignUpCreds((prev) => ({ ...prev, email: e.target.value }))
@@ -106,6 +108,7 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
           required
         />
         <input
+          className={styles.input}
           value={signUpCreds.password}
           onChange={(e) =>
             setSignUpCreds((prev) => ({ ...prev, password: e.target.value }))
@@ -115,6 +118,7 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
           required
         />
         <input
+          className={styles.input}
           value={signUpCreds.cpassword}
           onChange={(e) => {
             return setSignUpCreds((prev) => ({
@@ -128,7 +132,6 @@ const SignUp = ({ signUpIsOpen, setSignUpIsOpen }) => {
         />
         <p style={{ color: 'red' }}>{message}</p>
         <button onClick={handleSubmit}>SignUp</button>
-        {/* <navigate> Don't have account</navigate> */}
       </div>
     </Modal>
   );

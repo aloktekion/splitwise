@@ -34,6 +34,7 @@ const addGroup = (state, action) => {
       groupName: groupName,
       transaction: [],
       members: [userName],
+      transactionSharePerHead: [],
     };
     // console.log(state);
   }

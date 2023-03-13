@@ -17,7 +17,15 @@ export const getGroupId = (groupID) => {
     payload: groupID,
   };
 };
-export const addExpense = (amount, description, Paidby, PaidFor) => {
+export const addExpense = (
+  amount,
+  description,
+  Paidby,
+  PaidFor,
+  splitPerHead,
+  category,
+  date
+) => {
   return {
     type: ADD_GROUP_TYPES.ADD_EXPENSE,
     payload: {
@@ -25,6 +33,9 @@ export const addExpense = (amount, description, Paidby, PaidFor) => {
       description,
       Paidby,
       PaidFor,
+      splitPerHead,
+      category,
+      date,
     },
   };
 };

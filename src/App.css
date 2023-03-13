@@ -16,8 +16,8 @@
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  height: 400px;
-  width: 400px;
+  height: 100%;
+  width: 100%;
   color: #01dfba;
   /* padding: 1.5rem; */
 }
@@ -129,7 +129,7 @@ input:checked + .slider:before {
   font-size: 1rem;
 }
 button {
-  height: 30px;
+  height: 35px;
   width: 100px;
   border-style: none;
   border-radius: 4px;
@@ -152,4 +152,8 @@ td {
 .navlink {
   text-decoration: none;
   color: black;
+}
+.bi-person-square,
+.bi-person-bounding-box {
+  font-size: 3rem;
 }
