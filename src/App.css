@@ -10,66 +10,14 @@
   font-family: 'Sono', sans-serif;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 15vh;
-  background-color: #f7f7f7;
-  padding: 0 7rem;
-  color: #01dfba;
-  height: 6rem;
-  /* border: 2px solid black; */
-  font-size: larger;
-  box-shadow: 2px 1px 8px #f7f7f7;
-}
-
-.navbar ul {
-  display: flex;
-  gap: 10rem;
-  text-shadow: 2px 4px 4px #f7f7f7;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.navbar ul li {
-  list-style: none;
-}
-
-.bi-pie-chart-fill {
-  font-size: 2rem;
-}
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.welcome {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 4rem;
-  width: 50%;
-  height: 500px;
-  /* border: 2px solid black; */
-  box-shadow: 1px 2px 4px #01dfba;
-  border-radius: 0.3rem;
-  color: black;
-  text-shadow: 4px 8px 8px #f7f7f7;
-  font-size: 1.3rem;
-  font-weight: bolder;
-  padding-top: 2rem;
-  gap: 1.5rem;
-}
-
 .login {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.4rem;
-  height: 400px;
-  width: 400px;
+  height: 100%;
+  width: 100%;
   color: #01dfba;
   /* padding: 1.5rem; */
 }
@@ -84,32 +32,6 @@ input {
 }
 input:focus {
   border: 1px solid #01dfba;
-}
-
-.layout {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-.boxes {
-  width: 80vw;
-  display: flex;
-  gap: 15px;
-}
-.grow1 {
-  margin-top: 1.5rem;
-  height: 80vh;
-  width: 60vw;
-  background-color: #f7f7f7;
-  border-radius: 10px;
-}
-.sidebar {
-  width: 20vw;
-}
-.middle {
-  width: 60vw;
-  display: flex;
-  justify-content: space-around;
 }
 
 /* leftSidebar stylling */
@@ -207,7 +129,7 @@ input:checked + .slider:before {
   font-size: 1rem;
 }
 button {
-  height: 30px;
+  height: 35px;
   width: 100px;
   border-style: none;
   border-radius: 4px;
@@ -230,4 +152,8 @@ td {
 .navlink {
   text-decoration: none;
   color: black;
+}
+.bi-person-square,
+.bi-person-bounding-box {
+  font-size: 3rem;
 }
